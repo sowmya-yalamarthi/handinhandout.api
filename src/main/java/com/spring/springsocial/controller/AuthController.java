@@ -83,7 +83,6 @@ public class AuthController {
                 .body(new ApiResponse(true, "User registered successfully@"));
     }
     
-   
     @GetMapping("/userInfo")
     public Optional<User> getUserInfo(HttpServletRequest request) {
 
@@ -91,6 +90,7 @@ public class AuthController {
         Long userId = tokenProvider.getUserIdFromToken(jwt);
         return userRepository.findById(userId);
     }
+
     
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
@@ -99,6 +99,8 @@ public class AuthController {
         }
         return null;
     }
+    
+
     
     
 
